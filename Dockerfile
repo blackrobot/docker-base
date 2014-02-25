@@ -17,6 +17,8 @@ RUN apt-get update -qq && \
     locale-gen 'en_US.UTF-8' && \
     dpkg-reconfigure locales
 
+ENV LANG en_US.UTF-8
+
 # Fix some issues with APT packages.
 # See https://github.com/dotcloud/docker/issues/1024
 RUN dpkg-divert --local --rename --add /sbin/initctl && \
