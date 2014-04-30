@@ -4,7 +4,7 @@
 # and installs some necessary packages, including ruby2.1 from the Brightbox
 # ppa, and nodejs from Chris Lea's ppa.
 
-FROM ubuntu:12.04
+FROM ubuntu:trusty
 
 # Update, then set the locale
 RUN apt-get update -qq && \
@@ -25,12 +25,6 @@ RUN dpkg-divert --local --rename --add /sbin/initctl && \
 # Required packages
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get install -yqq build-essential curl git python-software-properties
-
-# Add the Brightbox PPA, and the nodejs PPA, then install ruby and nodejs
-RUN add-apt-repository -y ppa:brightbox/ruby-ng && \
-    add-apt-repository -y ppa:chris-lea/node.js && \
-    apt-get update -qq && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -yqq nodejs ruby2.1 ruby2.1-dev
 
 # Default to bash
 CMD ["/bin/bash"]
