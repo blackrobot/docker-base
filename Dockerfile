@@ -1,10 +1,9 @@
 # damon/base
 #
 # This sets up the base Ubuntu machine. It sets the locale, upgrades Ubuntu,
-# and installs some necessary packages, including ruby2.1 from the Brightbox
-# ppa, and nodejs from Chris Lea's ppa.
+# and installs some necessary packages.
 
-FROM ubuntu:trusty
+FROM ubuntu:14.04
 
 # Update, then set the locale
 RUN apt-get update -qq && \
