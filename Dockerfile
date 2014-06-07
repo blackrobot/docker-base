@@ -22,8 +22,12 @@ RUN dpkg-divert --local --rename --add /sbin/initctl && \
     ln -sf /bin/true /sbin/initctl
 
 # Required packages
-RUN DEBIAN_FRONTEND=noninteractive \
-    apt-get install -yqq build-essential curl git python-software-properties
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    build-essential \
+    curl \
+    git \
+    python-software-properties \
+    software-properties-common
 
 # Default to bash
 CMD ["/bin/bash"]
