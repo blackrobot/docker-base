@@ -5,8 +5,11 @@
 
 FROM ubuntu:14.04
 
+# Speed up apt-get
+RUN echo force-unsafe-io > /etc/dpkg/dpkg.cfg.d/02apt-speedup
+
 # Update, then set the locale
-RUN apt-get update -qq && \
+RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive locale-gen en_US.UTF-8 && \
     DEBIAN_FRONTEND=noninteractive dpkg-reconfigure locales
 
@@ -14,7 +17,7 @@ ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
 # Upgrade
-RUN DEBIAN_FRONTEND=noninteractive apt-get upgrade -yqq
+RUN DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y --no-install-recommends
 
 # Fix some issues with APT packages.
 # See https://github.com/dotcloud/docker/issues/1024
