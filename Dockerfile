@@ -32,5 +32,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
     python-software-properties \
     software-properties-common
 
+# Helpful alias for attached sessions
+RUN echo 'alias l="ls -alh"' >> /etc/bash.bashrc
+
 # Default to bash
 CMD ["/bin/bash"]
