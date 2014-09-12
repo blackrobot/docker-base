@@ -30,7 +30,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
     curl \
     git \
     python-software-properties \
-    software-properties-common
+    software-properties-common && \
+    rm -rf /var/lib/apt/lists/*
 
 # Helpful alias for attached sessions
 RUN echo 'alias l="ls -alh"' >> /etc/bash.bashrc
