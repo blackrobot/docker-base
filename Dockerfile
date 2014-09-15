@@ -38,3 +38,5 @@ RUN echo 'alias l="ls -alh"' >> /etc/bash.bashrc
 
 # Default to bash
 CMD ["/bin/bash"]
+
+ONBUILD RUN apt-get update
